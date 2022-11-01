@@ -43,3 +43,9 @@ body {
   opacity: 1;
   font-size: 1.5rem;
 }
+.Result{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}

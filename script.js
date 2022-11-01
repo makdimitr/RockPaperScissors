@@ -21,11 +21,12 @@ const SELECTIONS = [
 ]
 
 selectionButtons.forEach(selectionButton => {
-    selectionButton.addEventListener('click', e => {
-        const selectionName = selectionButton.dataset.selection
-        const selection = SELECTIONS.find(selection => selection.name === selectionName)
-        makeSelection(selection)
-    })
+    selectionButton.addEventListener('click', click);
+    function click() {
+        const selectionName = selectionButton.dataset.selection;
+        const selection = SELECTIONS.find(selection => selection.name === selectionName);
+        makeSelection(selection);
+    }
 })
 
 function makeSelection(selection){
@@ -39,6 +40,18 @@ function makeSelection(selection){
     if (yourWinner) incrementScore(yourScoreSpan)
     if (computerWinner) incrementScore(computerScoreSpan)
 
+    if(parseInt(yourScoreSpan.innerText) >= 5){
+        document.getElementById("finalResult").innerHTML = "You won!";
+        setTimeout(function(){
+            window.location.reload();
+        },2000);
+    }
+    else if(parseInt(computerScoreSpan.innerText) >= 5){
+        document.getElementById("finalResult").innerHTML = "Computer won!";
+        setTimeout(function(){
+            window.location.reload();
+        },2000);
+    }
 }
 
 function incrementScore(scoreSpan){
